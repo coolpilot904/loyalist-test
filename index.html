@@ -1,16 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loyalist Test</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Loyalist Test</h1>
-    <p>Please enter your name:</p>
-    <input type="text" id="nameInput">
-    <button onclick="checkName()">Submit</button>
+    <p>Enter your name to see if you are a loyalist:</p>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="checkLoyalist()">Check</button>
     <p id="result"></p>
 
-    <script src="script.js"></script>
+    <script>
+        function checkLoyalist() {
+            const name = document.getElementById('nameInput').value.trim().toLowerCase();
+            const loyalistNames = ["michael ritchie", "michael", "ritchie"];
+            
+            if (loyalistNames.some(loyalist => name.includes(loyalist))) {
+                document.getElementById('result').textContent = "You are a loyalist!";
+                document.getElementById('result').style.color = "green";
+            } else {
+                document.getElementById('result').textContent = "You are not a loyalist.";
+                document.getElementById('result').style.color = "red";
+            }
+        }
+    </script>
 </body>
 </html>

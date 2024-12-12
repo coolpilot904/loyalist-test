@@ -19,6 +19,10 @@
             font-size: 16px;
             margin: 5px;
         }
+        .gifContainer iframe {
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body>
@@ -27,18 +31,33 @@
     <input type="text" id="nameInput" placeholder="Enter your name">
     <button onclick="checkLoyalist()">Check</button>
     <p id="result"></p>
+    <div class="gifContainer">
+        <!-- Loyalist GIF -->
+        <iframe id="loyalistGif" src="https://giphy.com/embed/giiMEWL6aM9jaQkPZ1" width="480" height="269" style="border:none;" allowfullscreen></iframe>
+        <!-- Not Loyalist GIF -->
+        <iframe id="notLoyalistGif" src="https://giphy.com/embed/UPm8BqL6igDUPZ29ik" width="480" height="480" style="border:none;" allowfullscreen></iframe>
+    </div>
 
     <script>
         function checkLoyalist() {
             const name = document.getElementById('nameInput').value.trim().toLowerCase();
             const loyalistNames = ["michael ritchie", "michael", "ritchie"];
-            
+            const resultElement = document.getElementById('result');
+            const loyalistGif = document.getElementById('loyalistGif');
+            const notLoyalistGif = document.getElementById('notLoyalistGif');
+
+            // Hide both GIFs initially
+            loyalistGif.style.display = "none";
+            notLoyalistGif.style.display = "none";
+
             if (loyalistNames.some(loyalist => name.includes(loyalist))) {
-                document.getElementById('result').textContent = "You are a loyalist!";
-                document.getElementById('result').style.color = "green";
+                resultElement.textContent = "You are a loyalist!";
+                resultElement.style.color = "green";
+                loyalistGif.style.display = "block"; // Show loyalist GIF
             } else {
-                document.getElementById('result').textContent = "You are not a loyalist.";
-                document.getElementById('result').style.color = "red";
+                resultElement.textContent = "You are not a loyalist.";
+                resultElement.style.color = "red";
+                notLoyalistGif.style.display = "block"; // Show not loyalist GIF
             }
         }
     </script>

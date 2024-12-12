@@ -52,11 +52,11 @@
 
             if (loyalistNames.some(loyalist => name.includes(loyalist))) {
                 resultElement.textContent = "You are a loyalist!";
-                resultElement.style.color = "green";
+                resultElement.style.color = "red"; // Set text color to red for loyalist
                 loyalistGif.style.display = "block"; // Show loyalist GIF
             } else {
                 resultElement.textContent = "You are not a loyalist.";
-                resultElement.style.color = "red";
+                resultElement.style.color = "green"; // Set text color to green for not loyalist
                 notLoyalistGif.style.display = "block"; // Show not loyalist GIF
             }
         }
